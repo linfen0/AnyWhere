@@ -301,7 +301,7 @@ public class GoUtils {
      * @param callback Callback for result
      */
     public static void getIpLocation(String ip, final LocationCallback callback) {
-        String url = "http://ip-api.com/json/" + (ip == null ? "" : ip);
+        String url = "https://ipwho.is/" + (ip == null ? "" : ip);
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
                 .url(url)
@@ -334,8 +334,8 @@ public class GoUtils {
                         return;
                     }
 
-                    double lat = jsonObject.getDouble("lat");
-                    double lon = jsonObject.getDouble("lon");
+                    double lat = jsonObject.getDouble("latitude");
+                    double lon = jsonObject.getDouble("longitude");
                     if (callback != null) {
                         callback.onSuccess(lat, lon);
                     }
